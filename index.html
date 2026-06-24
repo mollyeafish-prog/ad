@@ -6,7 +6,9 @@
 
 <title>비밀번호 보안 강도 분석 프로그램</title>
 
-<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -21,24 +23,74 @@ html,body{
 width:100%;
 height:100%;
 overflow:hidden;
-background:#1e1f22;
-color:#dcddde;
+background:#050816;
+color:white;
 }
 
 body{
 position:relative;
 }
 
+.bg{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+overflow:hidden;
+z-index:-1;
+}
+
+.circle{
+position:absolute;
+border-radius:50%;
+filter:blur(120px);
+opacity:0.4;
+animation:float 12s infinite ease-in-out;
+}
+
+.c1{
+width:400px;
+height:400px;
+background:#3b82f6;
+top:-100px;
+left:-100px;
+}
+
+.c2{
+width:350px;
+height:350px;
+background:#7c3aed;
+bottom:-100px;
+right:-50px;
+animation-delay:2s;
+}
+
+.c3{
+width:250px;
+height:250px;
+background:#06b6d4;
+top:50%;
+left:60%;
+animation-delay:4s;
+}
+
+@keyframes float{
+0%{transform:translateY(0px);}
+50%{transform:translateY(-40px);}
+100%{transform:translateY(0px);}
+}
+
 .container{
 display:flex;
 height:100vh;
-transition:transform .7s cubic-bezier(.4,0,.2,1);
+transition:transform .8s cubic-bezier(.77,0,.18,1);
 }
 
 .slide{
 min-width:100vw;
 height:100vh;
-padding:60px;
+padding:80px;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -47,138 +99,139 @@ align-items:center;
 .card{
 width:90%;
 max-width:1100px;
-background:#2b2d31;
-border:1px solid #3a3d44;
-border-radius:20px;
-padding:40px;
-box-shadow:0 10px 30px rgba(0,0,0,.25);
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.1);
+backdrop-filter:blur(20px);
+padding:50px;
+border-radius:30px;
+box-shadow:0 20px 40px rgba(0,0,0,.4);
 }
 
-.cover{
+h1{
+font-size:4rem;
+font-weight:700;
+margin-bottom:20px;
+}
+
+h2{
+font-size:2.4rem;
+margin-bottom:25px;
+color:#60a5fa;
+}
+
+h3{
+font-size:1.4rem;
+margin-bottom:15px;
+color:#93c5fd;
+}
+
+p{
+line-height:1.9;
+font-size:1.05rem;
+color:#dbeafe;
+}
+
+ul{
+margin-top:15px;
+padding-left:25px;
+}
+
+li{
+margin-bottom:12px;
+line-height:1.8;
+}
+
+.hero{
 text-align:center;
 }
 
-.cover h1{
-font-size:42px;
-font-weight:700;
-margin-bottom:15px;
-color:#ffffff;
+.hero h1{
+font-size:5rem;
+background:linear-gradient(to right,#60a5fa,#38bdf8,#c084fc);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.cover p{
-font-size:16px;
-color:#b5bac1;
+.hero p{
+font-size:1.2rem;
+margin-top:20px;
 }
 
 .badge{
 display:inline-block;
-padding:8px 14px;
+padding:10px 18px;
 border-radius:999px;
-background:rgba(88,101,242,.12);
-border:1px solid rgba(88,101,242,.35);
-color:#8ea1ff;
-margin-bottom:20px;
-font-size:14px;
-}
-
-h2{
-font-size:28px;
+background:rgba(96,165,250,.15);
+border:1px solid rgba(96,165,250,.4);
+color:#93c5fd;
 margin-bottom:25px;
-color:#ffffff;
-}
-
-h3{
-font-size:18px;
-margin-top:18px;
-margin-bottom:10px;
-color:#c9cdfb;
-}
-
-p{
-font-size:16px;
-line-height:1.8;
-color:#dcddde;
-}
-
-ul{
-padding-left:22px;
-}
-
-li{
-font-size:16px;
-line-height:1.9;
-margin-bottom:8px;
 }
 
 .flow{
-display:flex;
-flex-wrap:wrap;
-gap:12px;
-margin-top:20px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+margin-top:30px;
 }
 
-.flow-box{
-padding:14px 20px;
-border-radius:12px;
-background:#1e1f22;
-border:1px solid #3a3d44;
-font-size:15px;
-}
-
-.code-box{
-background:#1a1b1e;
-border:1px solid #3a3d44;
-border-radius:14px;
+.box{
+background:rgba(255,255,255,.05);
 padding:20px;
-margin-top:20px;
-max-height:550px;
-overflow:auto;
+border-radius:18px;
+text-align:center;
+border:1px solid rgba(255,255,255,.08);
 }
 
-.code-box pre{
-font-size:13px;
-line-height:1.6;
-color:#d4d4d4;
-}
-
-.table{
-margin-top:20px;
-width:100%;
-border-collapse:collapse;
-}
-
-.table th,
-.table td{
-border:1px solid #3a3d44;
-padding:12px;
-font-size:15px;
-text-align:left;
-}
-
-.table th{
-background:#1e1f22;
+.arrow{
+text-align:center;
+font-size:2rem;
+color:#60a5fa;
+margin-top:10px;
 }
 
 .nav{
 position:fixed;
-bottom:25px;
+bottom:30px;
 left:50%;
 transform:translateX(-50%);
 display:flex;
 gap:10px;
+z-index:100;
 }
 
 .dot{
-width:10px;
-height:10px;
+width:12px;
+height:12px;
 border-radius:50%;
-background:#4b5563;
+background:#334155;
 transition:.3s;
 }
 
 .dot.active{
-background:#5865f2;
+background:#60a5fa;
 transform:scale(1.4);
+}
+
+kbd{
+background:#111827;
+padding:5px 10px;
+border-radius:8px;
+border:1px solid #374151;
+}
+
+.code-preview{
+background:#0f172a;
+padding:20px;
+border-radius:15px;
+margin-top:20px;
+font-family:monospace;
+overflow:auto;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.highlight{
+color:#60a5fa;
+font-weight:600;
 }
 
 </style>
@@ -186,12 +239,18 @@ transform:scale(1.4);
 
 <body>
 
+<div class="bg">
+<div class="circle c1"></div>
+<div class="circle c2"></div>
+<div class="circle c3"></div>
+</div>
+
 <div class="container" id="container">
 
-<!-- 1 -->
+<!-- Slide 1 -->
 
 <section class="slide">
-<div class="card cover">
+<div class="card hero">
 
 <div class="badge">
 프로그래밍 수행평가
@@ -200,10 +259,11 @@ transform:scale(1.4);
 <h1>비밀번호 보안 강도 분석 프로그램</h1>
 
 <p>
-정보보안 진로 연계 프로젝트
+비밀번호의 길이, 대문자, 숫자, 특수문자 포함 여부를 분석하여
+보안 수준을 평가하는 프로그램 개발
 </p>
 
-<br>
+<br><br>
 
 <p>
 3학년 6반 9번 김재현
@@ -212,168 +272,116 @@ transform:scale(1.4);
 </div>
 </section>
 
-<!-- 2 -->
+<!-- Slide 2 -->
 
 <section class="slide">
 <div class="card">
 
-<h2>1. 주제에 대한 관련 지식</h2>
+<h2>연구 동기</h2>
+
+<p>
+현대 사회에서는 대부분의 서비스가 계정 기반으로 운영되고 있으며,
+비밀번호는 개인정보와 계정을 보호하는 가장 기본적인 보안 수단이다.
+하지만 많은 사용자가 단순하거나 예측 가능한 비밀번호를 사용하여
+계정 탈취, 개인정보 유출 등의 보안 사고가 발생하고 있다.
+</p>
+
+<br>
+
+<p>
+본 연구에서는 사용자가 입력한 비밀번호의 보안 강도를 분석하고,
+안전한 비밀번호 생성 기준을 제시하는 프로그램을 개발하고자 하였다.
+</p>
+
+</div>
+</section>
+
+<!-- Slide 3 -->
+
+<section class="slide">
+<div class="card">
+
+<h2>관련 지식 및 핵심 개념</h2>
 
 <h3>Brute Force Attack</h3>
-
 <p>
-가능한 모든 비밀번호 조합을 대입하여 계정을 탈취하는 공격 방식이다.
-비밀번호가 짧거나 단순할수록 공격 성공 가능성이 높아진다.
+가능한 모든 비밀번호를 대입하여 계정을 탈취하는 공격 방식
 </p>
+
+<br>
 
 <h3>Dictionary Attack</h3>
-
 <p>
-사전에 존재하는 단어나 자주 사용되는 비밀번호 목록을 활용하여
-계정을 공격하는 방식이다.
+사전에 존재하는 단어나 자주 사용되는 비밀번호를 활용한 공격
 </p>
+
+<br>
 
 <h3>Password Policy</h3>
-
 <p>
-비밀번호 길이, 대문자, 숫자, 특수문자 포함 여부 등을 규정하여
-보안성을 향상시키는 정책이다.
-</p>
-
-<h3>비밀번호 강도 평가</h3>
-
-<p>
-비밀번호의 길이와 문자 구성 요소를 분석하여
-보안 수준을 판단하는 방법이다.
+비밀번호 길이, 대문자, 숫자, 특수문자 포함 여부를 강제하는 보안 정책
 </p>
 
 </div>
 </section>
 
-<!-- 3 -->
+<!-- Slide 4 -->
 
 <section class="slide">
 <div class="card">
 
-<h2>2. 연구의 필요성</h2>
-
-<p>
-최근 대부분의 온라인 서비스는 계정 기반으로 운영된다.
-하지만 사용자는 기억하기 쉬운 비밀번호를 선호하기 때문에
-계정 탈취 및 개인정보 유출 문제가 지속적으로 발생하고 있다.
-</p>
-
-<br>
-
-<p>
-본 연구에서는 비밀번호의 보안 수준을 자동으로 분석하는 프로그램을
-제작하여 안전한 비밀번호 사용 습관 형성에 도움을 주고자 하였다.
-</p>
-
-<br>
-
-<ul>
-<li>약한 비밀번호 사용 문제 해결</li>
-<li>계정 보안 의식 향상</li>
-<li>정보보안 기초 개념 이해</li>
-<li>프로그래밍 활용 능력 향상</li>
-</ul>
-
-</div>
-</section>
-
-<!-- 4 -->
-
-<section class="slide">
-<div class="card">
-
-<h2>3. 프로그램 제작</h2>
-
-<h3>동작 원리</h3>
+<h2>프로그램 알고리즘</h2>
 
 <div class="flow">
 
-<div class="flow-box">비밀번호 입력</div>
-<div class="flow-box">길이 검사</div>
-<div class="flow-box">대문자 검사</div>
-<div class="flow-box">숫자 검사</div>
-<div class="flow-box">특수문자 검사</div>
-<div class="flow-box">점수 계산</div>
-<div class="flow-box">등급 판정</div>
-<div class="flow-box">결과 출력</div>
+<div class="box">
+비밀번호 입력
+</div>
+
+<div class="box">
+길이 검사
+</div>
+
+<div class="box">
+문자 종류 검사
+</div>
+
+<div class="box">
+점수 계산
+</div>
 
 </div>
 
-<br>
+<div class="arrow">
+↓
+</div>
 
-<h3>사용 헤더파일</h3>
+<div class="flow">
 
-<table class="table">
+<div class="box">
+보안 등급 판정
+</div>
 
-<tr>
-<th>헤더파일</th>
-<th>역할</th>
-</tr>
+<div class="box">
+결과 출력
+</div>
 
-<tr>
-<td>stdio.h</td>
-<td>입출력 함수 사용</td>
-</tr>
+<div class="box">
+보안성 평가
+</div>
 
-<tr>
-<td>string.h</td>
-<td>문자열 길이 계산</td>
-</tr>
+<div class="box">
+사용자 안내
+</div>
 
-<tr>
-<td>ctype.h</td>
-<td>문자 종류 판별</td>
-</tr>
+</div>
 
-</table>
+<br><br>
 
-<br>
-
-<h3>주요 변수 설명</h3>
-
-<table class="table">
-
-<tr>
-<th>변수</th>
-<th>설명</th>
-</tr>
-
-<tr>
-<td>password</td>
-<td>입력 비밀번호 저장</td>
-</tr>
-
-<tr>
-<td>length</td>
-<td>비밀번호 길이 저장</td>
-</tr>
-
-<tr>
-<td>hasUpper</td>
-<td>대문자 포함 여부</td>
-</tr>
-
-<tr>
-<td>hasDigit</td>
-<td>숫자 포함 여부</td>
-</tr>
-
-<tr>
-<td>hasSpecial</td>
-<td>특수문자 포함 여부</td>
-</tr>
-
-<tr>
-<td>score</td>
-<td>보안 점수 계산</td>
-</tr>
-
-</table>
+<p>
+길이, 대문자 포함 여부, 숫자 포함 여부, 특수문자 포함 여부를
+기준으로 점수를 계산한 후 최종 보안 등급을 결정한다.
+</p>
 
 </div>
 </section>
