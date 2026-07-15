@@ -1,1 +1,1012 @@
-<title>tt</title>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>전자기파를 이용한 사이드 채널 공격과 정보보안</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Pretendard",sans-serif;
+}
+
+body{
+background:#0d0f14;
+overflow:hidden;
+color:#e5e5e5;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 20% 10%,rgba(255,180,60,.08),transparent 35%),
+radial-gradient(circle at 80% 80%,rgba(255,180,60,.05),transparent 40%);
+pointer-events:none;
+}
+
+.slide{
+
+display:none;
+width:100vw;
+height:90vh;
+
+padding:70px;
+
+animation:fade .5s ease;
+
+}
+
+.slide.active{
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+transform:translateY(25px);
+
+}
+
+to{
+
+opacity:1;
+transform:none;
+
+}
+
+}
+
+.tag{
+
+display:inline-block;
+padding:8px 18px;
+border-radius:30px;
+background:#8d6728;
+color:white;
+font-size:15px;
+margin-bottom:20px;
+
+}
+
+h1{
+
+font-size:60px;
+line-height:1.3;
+color:#f4cf83;
+margin-bottom:20px;
+
+}
+
+h2{
+
+font-size:42px;
+color:#f4cf83;
+margin-bottom:35px;
+border-left:7px solid #b68b3d;
+padding-left:18px;
+
+}
+
+p{
+
+font-size:24px;
+line-height:1.9;
+
+}
+
+ul{
+
+padding-left:35px;
+
+}
+
+li{
+
+font-size:28px;
+line-height:2;
+
+}
+
+.nav{
+
+height:10vh;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:25px;
+background:#090b0f;
+
+}
+
+button{
+
+padding:14px 32px;
+background:#8d6728;
+color:white;
+border:none;
+font-size:20px;
+border-radius:12px;
+cursor:pointer;
+transition:.3s;
+
+}
+
+button:hover{
+
+background:#a97d2d;
+
+}
+
+#page{
+
+font-size:22px;
+width:90px;
+text-align:center;
+
+}
+
+.split{
+
+display:flex;
+gap:60px;
+align-items:center;
+
+}
+
+.left{
+
+flex:1;
+
+}
+
+.right{
+
+flex:1;
+display:flex;
+justify-content:center;
+
+}
+
+.card{
+
+background:#171b22;
+border:2px solid #9d7430;
+padding:25px;
+border-radius:18px;
+margin-bottom:22px;
+transition:.3s;
+
+}
+
+.card:hover{
+
+transform:translateY(-6px);
+
+}
+
+img{
+
+max-width:100%;
+max-height:420px;
+border-radius:18px;
+border:2px solid #9d7430;
+
+}
+
+.flow{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:40px;
+
+}
+
+.flowBox{
+
+width:180px;
+height:120px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:#171b22;
+border:2px solid #a67b31;
+border-radius:18px;
+
+font-size:23px;
+font-weight:700;
+
+}
+
+.arrow{
+
+font-size:50px;
+color:#d4aa57;
+
+}
+
+.good{
+
+color:#73ff99;
+
+}
+
+.bad{
+
+color:#ff8d8d;
+
+}
+
+.timeline{
+
+display:flex;
+justify-content:space-between;
+margin-top:60px;
+
+}
+
+.time{
+
+width:220px;
+text-align:center;
+
+}
+
+.circle{
+
+width:90px;
+height:90px;
+
+border-radius:50%;
+background:#a57a30;
+
+margin:auto;
+margin-bottom:20px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-size:30px;
+font-weight:bold;
+
+}
+
+.small{
+
+font-size:20px;
+opacity:.8;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- 1 -->
+
+<section class="slide active">
+
+<span class="tag">
+
+물리학Ⅱ 진로 프로젝트
+
+</span>
+
+<h1>
+
+전자기파를 이용한<br>
+
+사이드 채널 공격과 정보보안
+
+</h1>
+
+<p>
+
+전자기파의 물리적 특성을 이용한 정보 유출 원리 탐구
+
+</p>
+
+<br><br>
+
+<p>
+
+학번 : 30615
+
+</p>
+
+<p>
+
+이름 : 박희준
+
+</p>
+
+</section>
+
+<!-- 2 -->
+
+<section class="slide">
+
+<h2>목차</h2>
+
+<ul>
+
+<li>연구 동기</li>
+
+<li>전자기파와 물리 개념</li>
+
+<li>사이드 채널 공격 원리</li>
+
+<li>실제 공격 사례</li>
+
+<li>사회적 영향</li>
+
+<li>향후 전망</li>
+
+<li>느낀 점</li>
+
+</ul>
+
+</section>
+
+<!-- 3 -->
+
+<section class="slide">
+
+<h2>연구 동기</h2>
+
+<div class="split">
+
+<div class="left">
+
+<div class="card">
+
+<p>
+
+저는 정보보안 분야에 관심이 있습니다.
+
+처음에는 해킹이 컴퓨터 프로그램만으로 이루어진다고 생각했지만,
+
+조사하면서 CPU와 메모리에서 발생하는 전자기파만으로도
+
+정보가 유출될 수 있다는 사실을 알게 되었습니다.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<p>
+
+이를 통해 물리학Ⅱ에서 배우는
+
+전자기파의 발생, 반사, 전자기 복사 개념이
+
+정보보안 기술과 직접 연결된다는 점에 흥미를 느껴
+
+이번 주제를 선택했습니다.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="right">
+
+<img src="images/security.png">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- 4 -->
+
+<section class="slide">
+
+<h2>물리학 개념</h2>
+
+<div class="split">
+
+<div class="left">
+
+<div class="card">
+
+<p>
+
+✔ 전자기파는
+
+전기장과 자기장이 진동하며
+
+빛의 속도로 전달되는 파동입니다.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<p>
+
+✔ CPU와 메모리도
+
+동작하면서 미세한 전자기파를
+
+계속 방출합니다.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<p>
+
+✔ 이 신호는
+
+거리와 환경에 따라
+
+반사·굴절·감쇠됩니다.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="right">
+
+<img src="images/electromagnetic.jpg">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- 5 -->
+
+<section class="slide">
+
+<h2>사이드 채널 공격 원리</h2>
+
+<p class="small">
+
+컴퓨터 내부에서 발생하는 전자기파를 분석하여
+
+암호키 등의 정보를 추정하는 공격
+
+</p>
+
+<div class="flow">
+
+<div class="flowBox">
+
+CPU
+
+</div>
+
+<div class="arrow">
+
+➜
+
+</div>
+
+<div class="flowBox">
+
+전자기파
+
+발생
+
+</div>
+
+<div class="arrow">
+
+➜
+
+</div>
+
+<div class="flowBox">
+
+안테나
+
+수신
+
+</div>
+
+<div class="arrow">
+
+➜
+
+</div>
+
+<div class="flowBox">
+
+신호
+
+분석
+
+</div>
+
+<div class="arrow">
+
+➜
+
+</div>
+
+<div class="flowBox">
+
+암호키
+
+추출
+
+</div>
+
+</div>
+
+<br><br>
+
+<div class="right">
+
+<img src="images/flow.png">
+
+</div>
+
+</section>
+
+<div class="nav">
+
+<button onclick="move(-1)">← 이전</button>
+
+<div id="page">
+
+1 / 9
+
+</div>
+
+<button onclick="move(1)">다음 →</button>
+
+</div>
+
+<script>
+
+const slides=document.querySelectorAll(".slide");
+
+let current=0;
+
+const page=document.getElementById("page");
+
+function show(i){
+
+if(i<0||i>=slides.length)return;
+
+slides[current].classList.remove("active");
+
+current=i;
+
+slides[current].classList.add("active");
+
+page.innerHTML=(current+1)+" / "+slides.length;
+
+}
+
+function move(n){
+
+show(current+n);
+
+}
+
+document.addEventListener("keydown",e=>{
+
+if(e.key==="ArrowRight")move(1);
+
+if(e.key==="ArrowLeft")move(-1);
+
+});
+
+document.addEventListener("wheel",e=>{
+
+if(e.deltaY>0){
+
+move(1);
+
+}else{
+
+move(-1);
+
+}
+
+},{passive:true});
+
+</script>
+
+</body>
+</html>
+
+<!-- 6 -->
+
+<section class="slide">
+
+<h2>실제 공격 사례</h2>
+
+<div class="split">
+
+<div class="left">
+
+<div class="card">
+
+<h3 style="color:#f4cf83;margin-bottom:15px;">① Van Eck Phreaking (1985)</h3>
+
+<p>
+
+컴퓨터 모니터에서 방출되는 전자기파를
+
+안테나로 수신하여
+
+멀리서도 화면 내용을 복원한 사례입니다.
+
+전자기파만으로 정보가 유출될 수 있다는 사실을
+
+처음 입증한 대표적인 연구입니다.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3 style="color:#f4cf83;margin-bottom:15px;">② TEMPEST</h3>
+
+<p>
+
+미국 정부가 연구한
+
+전자기파 도청 대응 기술입니다.
+
+군사시설에서는
+
+전자기 차폐실과 특수 장비를 이용하여
+
+정보 유출을 방지합니다.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="right">
+
+<img src="images/tempest.jpg">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- 7 -->
+
+<section class="slide">
+
+<h2>사회적 영향</h2>
+
+<div class="split">
+
+<div class="left">
+
+<div class="card">
+
+<h3 class="good">
+
+긍정적 영향
+
+</h3>
+
+<br>
+
+<ul>
+
+<li>전자기 차폐 기술 발전</li>
+
+<li>국가기관 보안 강화</li>
+
+<li>안전한 하드웨어 설계</li>
+
+<li>정보보호 기술 발전</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div class="right">
+
+<div class="card">
+
+<h3 class="bad">
+
+부정적 영향
+
+</h3>
+
+<br>
+
+<ul>
+
+<li>암호키 유출 가능성</li>
+
+<li>군사기밀 노출 위험</li>
+
+<li>기업 기술 유출</li>
+
+<li>개인정보 침해 가능성</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="img-box" style="text-align:center;">
+
+<img src="images/security_effect.png">
+
+</div>
+
+</section>
+
+<!-- 8 -->
+
+<section class="slide">
+
+<h2>향후 전망</h2>
+
+<p>
+
+사이드 채널 공격은 앞으로도 계속 발전할 것으로 예상됩니다.
+
+이에 따라 정보보안 기술 역시 더욱 발전하고 있습니다.
+
+</p>
+
+<div class="timeline">
+
+<div class="time">
+
+<div class="circle">
+
+①
+
+</div>
+
+<p>
+
+전자기 차폐 기술
+
+</p>
+
+</div>
+
+<div class="time">
+
+<div class="circle">
+
+②
+
+</div>
+
+<p>
+
+AI 기반 이상 탐지
+
+</p>
+
+</div>
+
+<div class="time">
+
+<div class="circle">
+
+③
+
+</div>
+
+<p>
+
+양자암호와 연계
+
+</p>
+
+</div>
+
+<div class="time">
+
+<div class="circle">
+
+④
+
+</div>
+
+<p>
+
+보안 칩 설계
+
+</p>
+
+</div>
+
+</div>
+
+<br><br>
+
+<div class="card">
+
+<p>
+
+앞으로는 하드웨어 자체에서
+
+전자기파를 최소화하는 설계와
+
+AI를 이용한 이상 탐지,
+
+양자암호 기술이 함께 발전하여
+
+사이드 채널 공격을 더욱 효과적으로 방어할 것으로 전망됩니다.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- 9 -->
+
+<section class="slide">
+
+<h2>느낀 점</h2>
+
+<div class="card">
+
+<p>
+
+이번 탐구를 통해
+
+정보보안은 단순히 프로그램만 보호하는 기술이 아니라,
+
+물리학의 원리까지 활용해야 하는 종합적인 학문이라는 점을 알게 되었습니다.
+
+특히 물리학Ⅱ에서 배운
+
+전자기파의 발생과 전파,
+
+반사와 감쇠 개념이
+
+실제 정보 유출 공격에 이용될 수 있다는 사실이 매우 인상 깊었습니다.
+
+또한 앞으로는 AI와 양자기술뿐 아니라
+
+전자기 차폐와 같은 물리적 보안도
+
+매우 중요한 분야가 될 것이라고 생각했습니다.
+
+</p>
+
+</div>
+
+<br>
+
+<p>
+
+<b>참고자료</b>
+
+</p>
+
+<ul>
+
+<li>Van Eck, W. (1985), Electromagnetic Radiation from Video Display Units.</li>
+
+<li>NATO TEMPEST Standards</li>
+
+<li>Kocher et al. Differential Power Analysis (CRYPTO 1999)</li>
+
+<li>IEEE Xplore Digital Library</li>
+
+<li>국가보안기술연구소(NSR)</li>
+
+</ul>
+
+</section>
+
+<script>
+
+const slides=document.querySelectorAll(".slide");
+
+let current=0;
+
+const page=document.getElementById("page");
+
+function show(index){
+
+if(index<0||index>=slides.length)return;
+
+slides[current].classList.remove("active");
+
+current=index;
+
+slides[current].classList.add("active");
+
+page.textContent=(current+1)+" / "+slides.length;
+
+}
+
+function move(dir){
+
+show(current+dir);
+
+}
+
+document.addEventListener("keydown",e=>{
+
+if(e.key==="ArrowRight")move(1);
+
+if(e.key==="ArrowLeft")move(-1);
+
+});
+
+let wheelLock=false;
+
+document.addEventListener("wheel",e=>{
+
+if(wheelLock)return;
+
+wheelLock=true;
+
+setTimeout(()=>wheelLock=false,500);
+
+if(e.deltaY>0){
+
+move(1);
+
+}else{
+
+move(-1);
+
+}
+
+},{passive:true});
+
+</script>
+
+</body>
+
+</html>
